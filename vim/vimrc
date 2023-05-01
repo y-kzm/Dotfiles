@@ -1,0 +1,21 @@
+
+set number
+
+set cursorline
+set cursorcolumn
+
+set virtualedit=onemore
+
+set showcmd
+
+set ruler
+
+syntax on
+colorscheme molokai
+
+set expandtab
+set tabstop=2
+set shiftwidth=2
+
+
+
