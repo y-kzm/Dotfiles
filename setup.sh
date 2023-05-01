@@ -1,31 +1,22 @@
 #!/bin/sh -
-if [ "`whoami`" != "root" ]; then
-  echo "Require root privilege"
-  exit 1
-fi
-
-echo 'sudo apt install -y zsh vim tmux'
-sudo apt install -y zsh vim tmux
-chsh -s $(which zsh)
-
-CWD=${1:-$(cd $(dirname $0)/../../; pwd)}
 
 symLinks() {
     # vim
     echo 'Create symlinks for vim'
-    ln -sf $CWD/vim/vimrc ~/.vimrc
-    ln -sf $CWD/vim/vim ~/.vim
+    ln -svf $PWD/vim/vimrc ~/.vimrc
+    ln -svfn $PWD/vim/vim ~/.vim
 
     # tmux
     echo 'Create symlinks for tmux'
-    ln -sf $CWD/tmux/tmux.conf ~/.tmux.conf
+    ln -svf $PWD/tmux/tmux.conf ~/.tmux.conf
     # prefix + I
 
     # zsh
     echo 'Create symlinks for zsh'
-    ln -sf $CWD/zsh/zshrc ~/.zshrc
-    ln -sf $CWD/zsh/p10k.zsh ~/.p10k.zsh
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    ln -svf $PWD/zsh/zshrc ~/.zshrc
+    ln -svf $PWD/zsh/p10k.zsh ~/.p10k.zsh
 }
-
 
 symLinks

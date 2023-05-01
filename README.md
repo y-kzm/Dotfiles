@@ -3,9 +3,9 @@
 
 # Install
 ```
-$ git clone [this repo]
-$ cd dotfiles
+$ git clone https://github.com/y-kzm/dotfiles_ubuntu.git ~/.dotfiles
+$ cd ~/.dotfiles
 $ chmod +x setup.sh
-$ sudo ./setup.sh
+$ ./setup.sh
 $ source ~/.zshrc
 ```
